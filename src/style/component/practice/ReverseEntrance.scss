@@ -1,0 +1,24 @@
+.reverse-entrance {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .re-question {
+        max-width: 50%;
+        margin-bottom: 2em;
+        .character-translation {
+            font-weight: 600;
+            
+        }
+    }
+
+    .controls {
+        width: 17em;
+
+        > * {
+            width: 100%;
+        }
+    }
+}

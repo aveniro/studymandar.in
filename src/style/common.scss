@@ -1,0 +1,34 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+$font-family-main: 'Roboto', sans-serif;
+
+// Reset
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font-family-main;
+    -webkit-tap-highlight-color: transparent;
+    tap-hightlight-color: transparent;
+}
+
+body {
+    position: relative;
+}
+
+body, html, #app, .content, .home {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
+// Colors
+$button-color: rgba(28, 142, 195, 0.7);
+$button-color-hover: rgba(28, 142, 195, 0.8);
+$button-color-active: rgba(28, 142, 195, 1);

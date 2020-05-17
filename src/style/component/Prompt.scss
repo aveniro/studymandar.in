@@ -1,0 +1,54 @@
+.prompt-body {
+    z-index: 1000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+
+    animation: fade-in 50ms ease-in forwards;
+
+    .prompt {
+        background: white;
+    
+        margin: auto;
+    
+        border: 1px solid black;
+        border-radius: 0.25em;
+        padding: 1em;
+
+        animation: prompt-in 50ms ease-out forwards;
+
+        .prompt-title {
+            margin-bottom: 1em;
+        }
+
+        .button {
+            margin: 0.5em;
+        }
+
+        @keyframes prompt-in {
+            from {
+                transform: scale(0.98) translateY(0.4em);
+            }
+
+            to {
+                transform: scale(1) translateY(0);
+            }
+        }
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}

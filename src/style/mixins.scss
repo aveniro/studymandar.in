@@ -1,0 +1,15 @@
+@mixin appear($timing) {
+    opacity: 0;
+
+    animation: appear-animation $timing ease-out forwards;
+
+    @keyframes appear-animation {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}

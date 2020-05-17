@@ -1,0 +1,17 @@
+.small-menu {
+    min-width: 20em;
+    .small-menu-option {
+        width: 100%;
+        padding: 0.5em;
+        transition: 300ms;
+        cursor: pointer;
+
+        &:hover {
+            background: rgba(0,0,0,0.03);
+        }
+
+        &:active {
+            background: rgba(0,0,0,0.07);
+        }
+    }
+}

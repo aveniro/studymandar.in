@@ -1,0 +1,47 @@
+.viewport {
+    .navigation {
+        width: 100%;
+        transition: height 300ms, padding 300ms, opacity 300ms;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .back-button {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            cursor: pointer;
+            width: 5em;
+
+            > svg {
+                transition: 300ms;
+                transform: translateX(0.2em);
+            }
+
+            &:hover {
+                > svg {
+                    transform: translateX(0);
+                }
+            }
+        }
+
+        &[data-status="enabled"] {
+            height: 1em;
+            padding: 1em;
+            opacity: 1;
+        }
+
+        &[data-status="disabled"] {
+            height: 0;
+            padding: 0;
+            opacity: 0;
+        }
+    }
+
+    .view-item {
+        padding: 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+}
