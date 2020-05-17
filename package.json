@@ -7,7 +7,8 @@
     "serve": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack --profile --json > dist/stats.json",
     "analyze": "npm run build && webpack-bundle-analyzer dist/stats.json",
-    "lint": "eslint src/**/*.jsx --fix"
+    "lint": "eslint src/**/*.jsx --fix",
+    "deploy": "npm run build && ./gh-deploy.sh"
   },
   "author": "",
   "license": "ISC",
