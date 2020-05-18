@@ -1,4 +1,4 @@
-import {h, render} from 'preact';
+import {h} from 'preact';
 import {useState, useEffect} from 'preact/hooks';
 import {createStore, createEvent} from 'effector';
 import {useStore} from 'effector-react';
@@ -27,14 +27,14 @@ function Toast(_) {
 }
 
 toasts.on(toast, (oldState, toastData) => {
-    const toastEl = <Toast data={toastData} />
+    const toastEl = <Toast data={toastData} />;
 
     setTimeout(() => {deleteToast();}, 5000);
 
     return [...oldState,  toastEl];
 });
 
-export function Toaster(_) {
+export function Toaster() {
     const toastState = useStore(toasts);
 
     return (

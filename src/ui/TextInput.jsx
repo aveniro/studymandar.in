@@ -1,4 +1,4 @@
-import {createRef, h, render, Component} from 'preact';
+import {createRef, h, Component} from 'preact';
 
 import '#/ui/TextInput.scss';
 
@@ -45,4 +45,4 @@ export default class TextInput extends Component {
             </div>
         );
     }
-};
+}

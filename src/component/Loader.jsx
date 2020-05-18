@@ -1,4 +1,4 @@
-import {h, render} from 'preact';
+import {h} from 'preact';
 import {useStore} from 'effector-react';
 
 import {loadStore} from 'state/ui';

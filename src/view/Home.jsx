@@ -1,4 +1,4 @@
-import {h, render, Component} from 'preact';
+import {h} from 'preact';
 import {useCallback, useRef} from 'preact/hooks';
 import {useStore} from 'effector-react';
 
@@ -36,7 +36,7 @@ export default function Home() {
     const onWordDelete = useCallback(word => {
         wordsApi.deleteWord(word);
         viewportRef.current?.goBack();
-        toast({title: `${word.script} Deleted!`})
+        toast({title: `${word.script} Deleted!`});
     });
 
     const onTableWordSelect = useCallback(word => {

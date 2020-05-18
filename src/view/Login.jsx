@@ -1,4 +1,4 @@
-import {createRef, h, render, Component, Fragment} from 'preact';
+import {createRef, h, Fragment} from 'preact';
 import {useStore} from 'effector-react';
 
 import firebase from '@/firebase';
@@ -7,6 +7,8 @@ import {userState} from 'state/user';
 
 import TextInput from '@/ui/TextInput';
 import Button from '@/ui/Button';
+
+import {toast} from '@/component/Toaster';
 
 import '#/view/Login.scss';
 
@@ -17,7 +19,8 @@ export default function Login() {
     const passwordRef = createRef();
 
     const doLogin = () => {
-        firebase.auth().signInWithEmailAndPassword(emailRef.current.value(), passwordRef.current.value()).catch(e => {
+        firebase.auth().signInWithEmailAndPassword(emailRef.current.value(), passwordRef.current.value()).catch(() => {
+            toast({title: 'Unable to sign in...'});
         });
     };
 
@@ -41,4 +44,4 @@ export default function Login() {
             </div>
         </div>
     );
-};
+}

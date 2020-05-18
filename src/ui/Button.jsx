@@ -1,4 +1,4 @@
-import {h, render, Component} from 'preact';
+import {h, Component} from 'preact';
 
 import '#/ui/Button.scss';
 
@@ -12,4 +12,4 @@ export default class Button extends Component {
             </div>
         );
     }
-};
+}

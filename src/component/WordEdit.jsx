@@ -1,7 +1,4 @@
-import {createRef, h, render, Component} from 'preact';
-
-import {toast} from '@/component/Toaster';
-
+import {createRef, h, Component} from 'preact';
 import Prompt from '@/component/Prompt';
 
 import TextInput from '@/ui/TextInput';
@@ -75,4 +72,4 @@ export default class WordEdit extends Component {
             </div>
         );
     }
-};
+}

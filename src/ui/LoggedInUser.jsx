@@ -1,4 +1,4 @@
-import {h, render, Component} from 'preact';
+import {h} from 'preact';
 import {useStore} from 'effector-react';
 
 import {userState} from 'state/user';

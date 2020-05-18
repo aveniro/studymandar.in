@@ -1,4 +1,4 @@
-import {h, render, Component} from 'preact';
+import {h, Component} from 'preact';
 
 import Button from '@/ui/Button';
 
@@ -29,7 +29,7 @@ export default class Prompt extends Component {
                 <div className="prompt">
                     <div className="prompt-title">{promptText}</div>
                     {actions.map(action => 
-                        <Button title={action.title} onClick={() => {this.resolve(action.callback)}} />
+                        <Button key={action.title} title={action.title} onClick={() => {this.resolve(action.callback);}} />
                     )}
                 </div>
             </div>
@@ -41,8 +41,8 @@ export default class Prompt extends Component {
             visible: true,
             promptText: `Do you want to ${promptText}?`,
             actions: [
-                { title: 'Yes', callback: () => {callback(true)} },
-                { title: 'No', callback: () => {callback(false)} }
+                { title: 'Yes', callback: () => {callback(true);} },
+                { title: 'No', callback: () => {callback(false);} }
             ]
         });
     }
@@ -59,4 +59,4 @@ export default class Prompt extends Component {
         super();
         Prompt._instance = this;
     }
-};
+}

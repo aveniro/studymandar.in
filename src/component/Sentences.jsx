@@ -1,6 +1,4 @@
-import {h, render, Component} from 'preact';
-
-import {useStore} from 'effector-react';
+import {h} from 'preact';
 
 import {sentencesState} from 'state/sentences';
 

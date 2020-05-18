@@ -1,4 +1,4 @@
-import {createRef, h, render, Component, Fragment} from 'preact';
+import {h} from 'preact';
 import {useState, useCallback, useMemo} from 'preact/hooks';
 import {createEvent} from 'effector';
 import {useStore} from 'effector-react';
@@ -7,7 +7,7 @@ import '#/ui/Table.scss';
 
 export default function Table(_) {
     const [pageNumber, setPageNumber] = useState(0);
-    const [pageLength, setPageLength] = useState(10);
+    const [pageLength] = useState(10);
 
     // Base Rows
     let rows = _.dynamicRows ? useStore(_.dynamicRows) : useState(_.rows);
@@ -29,14 +29,14 @@ export default function Table(_) {
         const sortEvent = createEvent();
         _.dynamicRows.on(sortEvent, (state, by) => [...state].sort((a, b) => sortFunction(a, b, by)));
         return sortEvent;
-    })() : useCallback(() => {
+    })() : useCallback(by => {
         setRows(rows.sort((a, b) => sortFunction(a, b, by)));
     }, [rows, setRows]);
 
     // Headers
     const headers = useMemo(() => {
         return _.columns.map(columnDef => 
-            <th onClick={() => {sort(columnDef.split('=')[0])}}>{columnDef.split('=')[1]}</th>
+            <th key={columnDef.split('=')[0]} onClick={() => {sort(columnDef.split('=')[0]);}}>{columnDef.split('=')[1]}</th>
         );
     }, [_.columns, sort]);
 
@@ -44,7 +44,7 @@ export default function Table(_) {
     const page = useMemo(() => {
         const pageRows = rows.slice(pageNumber * pageLength, (pageNumber * pageLength) + pageLength);
         return pageRows.map(rowDefinition => 
-            <tr onClick={() => {_.onSelect?.(rowDefinition)}}>{_.columns.map(column => <td>{rowDefinition[column.split('=')[0]]}</td>)}</tr>
+            <tr key={rowDefinition} onClick={() => {_.onSelect?.(rowDefinition);}}>{_.columns.map(column => <td key={column.split('=')[0]}>{rowDefinition[column.split('=')[0]]}</td>)}</tr>
         );
     }, [_.columns, pageNumber, pageLength, rows]);
 
@@ -54,7 +54,7 @@ export default function Table(_) {
 
         for(let i = 0; i < Math.ceil(rows.length / pageLength); i++) {
             controlsArray.push(
-                <div onClick={() => {setPageNumber(i)}} 
+                <div onClick={() => {setPageNumber(i);}} 
                     data-status={pageNumber === i ? 'active' : 'inactive'} 
                     className="page-button"> 
                     { i + 1 } 

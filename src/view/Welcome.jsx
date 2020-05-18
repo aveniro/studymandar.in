@@ -1,7 +1,6 @@
-import {Fragment, createRef, h, render, Component} from 'preact';
+import {Fragment, createRef, h, Component} from 'preact';
 
 import '#/view/Welcome.scss';
-import { isIterable } from 'core-js';
 
 export default class Welcome extends Component {
     welcomePageRef = createRef();
@@ -13,21 +12,21 @@ export default class Welcome extends Component {
     };
 
     pages = [
-        {i: 0, title: 'chinese-helper', body: `Welcome to the free chinese helper software created by Nathan Seymour.`, color: '#3891A6'},
-        {i: 1, title: 'The Philosophy', body: `The most efficient and successful language learners create their own resources, we give you the tools to do just that.`, color: '#8F3985'},
-        {i: 2, title: 'Mobility', body: `Cloud based and mobile optimized, you can take your study session with you anywhere.`, color: '#2F3061'},
-        {i: 3, title: 'Get Started', body: `Well, what are you waiting for?`, color: '#FF595E'},
+        {i: 0, title: 'chinese-helper', body: 'Welcome to the free chinese helper software created by Nathan Seymour.', color: '#3891A6'},
+        {i: 1, title: 'The Philosophy', body: 'The most efficient and successful language learners create their own resources, we give you the tools to do just that.', color: '#8F3985'},
+        {i: 2, title: 'Mobility', body: 'Cloud based and mobile optimized, you can take your study session with you anywhere.', color: '#2F3061'},
+        {i: 3, title: 'Get Started', body: 'Well, what are you waiting for?', color: '#FF595E'},
     ];
 
     pageNext = () => {
         if(this.state.page + 1 < this.pages.length) {
-            this.setState({page: this.state.page + 1})
+            this.setState({page: this.state.page + 1});
         }
     };
 
     pageBack = () => {
         if(this.state.page - 1 > -1) {
-            this.setState({page: this.state.page - 1})
+            this.setState({page: this.state.page - 1});
         }
     };
 
@@ -36,7 +35,7 @@ export default class Welcome extends Component {
         this.setState({touching: true, startX: e.touches[0].pageX, displacement: 0});
     };
 
-    touchEnd = e => {
+    touchEnd = () => {
         this.setState({touching: false});
         if(this.state.displacement < -100) {
             this.pageNext();
@@ -45,7 +44,7 @@ export default class Welcome extends Component {
         }
     };
 
-    touchCancel = e => {
+    touchCancel = () => {
         this.setState({touching: false});
     };
 
@@ -57,7 +56,7 @@ export default class Welcome extends Component {
 
     render(_, {touching, displacement}) {
         return (
-            <>
+            <Fragment>
                 <div onTouchStart={this.touchStart}
                     onTouchEnd={this.touchEnd}
                     onTouchCancel={this.touchCancel}
@@ -67,7 +66,7 @@ export default class Welcome extends Component {
                     data-status={touching ? 'touching' : 'not-touching'}
                     style={{ transform: touching ? `translateX(calc(-${String(this.state.page)} * 100vw + ${displacement}px * 1.1))` : `translateX(calc(-${String(this.state.page)} * 100vw))` }}>
                     {this.pages.map(page => 
-                        <div style={{background: page.color}} className="welcome-page">
+                        <div key={page.i} style={{background: page.color}} className="welcome-page">
                             <div className="page-title">{page.title}</div>
                             <div className="page-body">{page.body}</div>
                         </div>
@@ -81,12 +80,12 @@ export default class Welcome extends Component {
 
                 <div className="welcome-navigation">
                     {this.pages.map(page => 
-                        <svg data-status={page.i === this.state.page ? 'active' : 'inactive'} viewBox="0 0 100 100">
+                        <svg key={page.i} data-status={page.i === this.state.page ? 'active' : 'inactive'} viewBox="0 0 100 100">
                             <circle cx="50" cy="50" r="50"/>
                         </svg>
                     )}
                 </div>
-            </>
+            </Fragment>
         );
     }
-};
+}
