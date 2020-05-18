@@ -8,8 +8,8 @@
     "build": "cross-env NODE_ENV=production webpack --profile --json > dist/stats.json",
     "analyze": "npm run build && webpack-bundle-analyzer dist/stats.json",
     "lint": "eslint src/**/*.jsx src/**/*.js --fix",
-    "deploy": "npm run build && ./gh-deploy.sh",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "npm run lint && npm run test && npm run build && ./gh-deploy.sh"
   },
   "author": "",
   "license": "ISC",
