@@ -8,7 +8,8 @@
     "build": "cross-env NODE_ENV=production webpack --profile --json > dist/stats.json",
     "analyze": "npm run build && webpack-bundle-analyzer dist/stats.json",
     "lint": "eslint src/**/*.jsx --fix",
-    "deploy": "npm run build && ./gh-deploy.sh"
+    "deploy": "npm run build && ./gh-deploy.sh",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -32,6 +33,7 @@
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
     "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.0.1",
     "node-sass": "^4.14.1",
     "preact-router": "^3.2.1",
     "react-refresh": "^0.8.2",
@@ -42,6 +44,6 @@
     "webpack": "^4.43.0",
     "webpack-bundle-analyzer": "^3.7.0",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.11.0"
   }
 }
