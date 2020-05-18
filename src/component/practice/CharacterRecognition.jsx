@@ -4,6 +4,8 @@ import {useStore} from 'effector-react';
 
 import {wordsState, wordsApi} from 'state/words';
 
+import {toast} from '@/component/Toaster';
+
 import TextInput from '@/ui/TextInput';
 import Button from '@/ui/Button';
 
@@ -27,10 +29,10 @@ export default function CharacterRecognition() {
     const check = useCallback(() => {
         if(word.pinyin === pinyinRef.current?.value()) {
             wordsApi.ocrCorrect(word);
-            alert('Correct');
+            toast({title: 'Correct!'});
         } else {
             wordsApi.ocrIncorrect(word);
-            alert('False you retard');
+            toast({title: 'Incorrect!'});
         }
 
         pinyinRef.current?.clear();

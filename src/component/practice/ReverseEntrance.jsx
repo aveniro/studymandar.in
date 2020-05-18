@@ -2,6 +2,8 @@ import {h, render, Component} from 'preact';
 import {useState, useCallback, useEffect, useRef} from 'preact/hooks';
 import {useStore} from 'effector-react';
 
+import {toast} from '@/component/Toaster';
+
 import {wordsState, wordsApi} from 'state/words';
 
 import TextInput from '@/ui/TextInput';
@@ -27,10 +29,10 @@ export default function ReverseEntrance() {
     const check = useCallback(() => {
         if(word.script === chineseRef.current?.value()) {
             wordsApi.vocabCorrect(word);
-            alert('Correct');
+            toast({title: 'Correct!'});
         } else {
             wordsApi.vocabIncorrect(word);
-            alert('False you retard');
+            toast({title: 'Incorrect!'});
         }
 
         chineseRef.current?.clear();
