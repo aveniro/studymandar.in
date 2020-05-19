@@ -8,11 +8,6 @@
     flex-direction: row;
     overflow: hidden;
 
-    &[data-status="touching"] {
-        transition: 20ms;
-        transition-timing-function: linear;
-    }
-
     &[data-status="not-touching"] {
         transition: 200ms;
         transition-timing-function: ease-in-out;

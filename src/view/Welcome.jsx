@@ -47,7 +47,6 @@ export default class Welcome extends Component {
     };
 
     touchStart = e => {
-        e.preventDefault();
         this.setState({touching: true, startX: e.touches[0].pageX, displacement: 0});
     };
 
