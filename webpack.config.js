@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 const mode = process.env.NODE_ENV;
 
 module.exports = {
@@ -40,7 +42,8 @@ module.exports = {
             'env': {
                 'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
             }
-        })
+		}),
+		new CleanWebpackPlugin()
 	],
 	devServer: {
         port: 9000,

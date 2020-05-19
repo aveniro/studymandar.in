@@ -15,7 +15,6 @@
   "jest": {
     "moduleNameMapper": {
       "^.+\\.(css|less|scss)$": "identity-obj-proxy",
-
       "^@/(.*)$": "<rootDir>/src/$1",
       "^#/(.*)$": "<rootDir>/src/style/$1",
       "^config/(.*)$": "<rootDir>/config/$1",
@@ -42,6 +41,7 @@
     "@testing-library/react": "^10.0.4",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
