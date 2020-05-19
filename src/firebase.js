@@ -7,9 +7,9 @@ import { route } from 'preact-router';
 
 import firebaseConfig from 'config/firebase';
 
-import {userState, userApi} from 'state/user';
-import {wordsState, wordsApi} from 'state/words';
-import {sentencesState, sentencesApi} from 'state/sentences';
+import {userApi} from 'state/user';
+import {wordsApi} from 'state/words';
+import {sentencesApi} from 'state/sentences';
 import {loadApi} from 'state/ui';
 
 firebase.initializeApp(firebaseConfig);
@@ -25,7 +25,7 @@ firebase.auth().onAuthStateChanged(user => {
                 collection.doc(user.uid).set({ 
                     uid: user.uid,
                     email: user.email
-                 });
+                });
 
                 wordsApi.updateWords([]);
             } else {
@@ -54,9 +54,8 @@ firebase.auth().onAuthStateChanged(user => {
         route('/welcome');
     }
 
-    loadApi.stop();
-
     userApi.updateUser(user);
+    loadApi.stop();
 });
 
 export default firebase;

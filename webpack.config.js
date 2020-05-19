@@ -7,8 +7,7 @@ const mode = process.env.NODE_ENV;
 
 module.exports = {
 	entry: {
-		index: './src/index.js',
-		firebase: './src/firebase.js'
+		index: './src/index.js'	
 	},
 	mode,
 	output: {
@@ -54,9 +53,6 @@ module.exports = {
         hot: true
 	},
 	optimization: {
-		splitChunks: {
-			chunks: 'all'	
-		},
 		minimize: mode === 'production',
 		minimizer: [new TerserPlugin({
 			extractComments:false,

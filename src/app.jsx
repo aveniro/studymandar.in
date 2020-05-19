@@ -1,14 +1,14 @@
 import {h, render, Component} from 'preact';
 import Router from 'preact-router';
 
-import '@/firebase';
+import(/* webpackChunkName "firebase" */ '@/firebase');
 
 import Home from '@/view/Home';
 import Login from '@/view/Login';
 import Register from '@/view/Register';
 import Welcome from '@/view/Welcome';
 
-import {Toaster, toast} from '@/component/Toaster';
+import {Toaster} from '@/component/Toaster';
 import Loader from '@/component/Loader';
 
 import TopBar from '@/component/TopBar';
@@ -20,25 +20,25 @@ import '@/style/common.scss';
 class App extends Component {
 	state = {};
 
-	render({}, {}) {
-		return (
-			<div id="app">
-				<TopBar />
+	render() {
+	    return (
+	        <div id="app">
+	            <TopBar />
 				
-				<div className="content">
-					<Router>
-						<Home path="/" />
-						<Login path="/login" />
-						<Register path="/register" />
-						<Welcome path="/welcome" />
-					</Router>
-				</div>
+	            <div className="content">
+	                <Router>
+	                    <Home path="/" />
+	                    <Login path="/login" />
+	                    <Register path="/register" />
+	                    <Welcome path="/welcome" />
+	                </Router>
+	            </div>
 
-				<Prompt />
-				<Toaster />
-				<Loader />
-			</div>
-		);
+	            <Prompt />
+	            <Toaster />
+	            <Loader />
+	        </div>
+	    );
 	}
 };
 

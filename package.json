@@ -4,8 +4,9 @@
   "description": "",
   "main": "src/app.jsx",
   "scripts": {
-    "serve": "cross-env NODE_ENV=development webpack-dev-server",
+    "serve:dev": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack --profile --json > dist/stats.json",
+    "serve:prod": "npm run build && serve",
     "analyze": "npm run build && webpack-bundle-analyzer dist/stats.json",
     "lint": "eslint src/**/*.jsx src/**/*.js test/**/*.js --fix",
     "test": "jest",

@@ -10,7 +10,7 @@ import Button from '@/ui/Button';
 
 import {toast} from '@/component/Toaster';
 
-import '#/view/Login.scss';
+import '#/view/LoginRegister.scss';
 
 export default function Login() {
     const user = useStore(userState);
