@@ -31,7 +31,7 @@
         "linebreak-style": ["error", "unix"],
         "quotes": ["error", "single"],
         "semi": ["error", "always"],
-        "no-unused-vars": "warn",
+        "no-unused-vars": "error",
         "react/react-in-jsx-scope": "off",
         "react/prop-types": "off",
         "comma-style": ["error", "last"],

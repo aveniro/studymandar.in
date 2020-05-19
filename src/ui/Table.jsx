@@ -55,8 +55,8 @@ export default function Table(_) {
         for(let i = 0; i < Math.ceil(rows.length / pageLength); i++) {
             controlsArray.push(
                 <div onClick={() => { setPageNumber(i); }} 
-                data-status={pageNumber === i ? 'active' : 'inactive'} 
-                className="page-button"> 
+                    data-status={pageNumber === i ? 'active' : 'inactive'} 
+                    className="page-button"> 
                     { i + 1 } 
                 </div>
             );

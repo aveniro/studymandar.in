@@ -1,4 +1,7 @@
 import {Component, Fragment, createRef, h} from 'preact';
+import {route} from 'preact-router';
+
+import Button from '@/ui/Button';
 
 import '#/view/Welcome.scss';
 
@@ -15,7 +18,18 @@ export default class Welcome extends Component {
         {i: 1, title: 'chinese-helper', body: 'Welcome to the free chinese helper software created by Nathan Seymour.', color: '#3891A6'},
         {i: 2, title: 'The Philosophy', body: 'The most efficient and successful language learners create their own resources, we give you the tools to do just that.', color: '#8F3985'},
         {i: 3, title: 'Mobility', body: 'Cloud based and mobile optimized, you can take your study session with you anywhere.', color: '#2F3061'},
-        {i: 4, title: 'Get Started', body: 'Well, what are you waiting for?', color: '#FF595E'}
+        {
+            i: 4, 
+            title: 'chinese-helper', 
+            body: 'Well, what are you waiting for?', 
+            color: '#FF595E',
+            action: {
+                title: 'Get Started',
+                action: () => {
+                    route('/register');
+                }
+            }
+        }
     ];
 
     pageNext = () => {
@@ -69,14 +83,17 @@ export default class Welcome extends Component {
                     className="welcome"
                     data-status={touching ? 'touching' : 'not-touching'}
                     style={{ transform: touching ? `translateX(calc(-${String(this.state.page)} * 100vw + calc(${displacement}px * 1.2)))` : `translateX(calc(-${String(this.state.page)} * 100vw))` }}>
-                        <div className="welcome-page padding" style={{background: this.pages[0].color}}></div>
-                        {this.pages.map(page => 
-                            <div key={page.i} style={{background: page.color}} className="welcome-page">
-                                <div className="page-title">{page.title}</div>
-                                <div className="page-body">{page.body}</div>
-                            </div>
-                        )}
-                        <div className="welcome-page padding" style={{background: this.pages[this.pages.length - 1].color}}></div>
+                    <div className="welcome-page padding" style={{background: this.pages[0].color}}></div>
+                    {this.pages.map(page => 
+                        <div key={page.i} style={{background: page.color}} className="welcome-page">
+                            <div className="page-title">{page.title}</div>
+                            <div className="page-body">{page.body}</div>
+                            { page.action ? <div className="page-action">
+                                <Button onClick={page.action.action} title={page.action.title} />
+                            </div> : ''}
+                        </div>
+                    )}
+                    <div className="welcome-page padding" style={{background: this.pages[this.pages.length - 1].color}}></div>
                 </div>
 
                 <div className="welcome-side-navigation">

@@ -5,6 +5,7 @@ import '@/firebase';
 
 import Home from '@/view/Home';
 import Login from '@/view/Login';
+import Register from '@/view/Register';
 import Welcome from '@/view/Welcome';
 
 import {Toaster, toast} from '@/component/Toaster';
@@ -28,6 +29,7 @@ class App extends Component {
 					<Router>
 						<Home path="/" />
 						<Login path="/login" />
+						<Register path="/register" />
 						<Welcome path="/welcome" />
 					</Router>
 				</div>
