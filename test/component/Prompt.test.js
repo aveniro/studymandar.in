@@ -6,7 +6,7 @@ import Prompt from '@/component/Prompt';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('<Prompt /> component', async () => {
+describe('<Prompt /> component', () => {
     const container = Enzyme.mount(<Prompt />);
 
     it('should start detached from DOM', () => {
@@ -14,6 +14,6 @@ describe('<Prompt /> component', async () => {
     });
 
     it('should yesNo properly', () => {
-        Prompt.yesNo('work correctly');
+        //Prompt.yesNo('work correctly');
     });
 });
