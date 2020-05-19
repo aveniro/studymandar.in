@@ -3,7 +3,7 @@ import {useCallback, useRef} from 'preact/hooks';
 import {useStore} from 'effector-react';
 
 import {wordsApi} from 'state/words';
-import {menuStore, menuApi} from 'state/ui';
+import {menuApi, menuStore} from 'state/ui';
 
 import Viewport from '@/component/Viewport';
 
@@ -58,13 +58,13 @@ export default function Home() {
 
         'Practice',
         { 
-            title: 'Do a test' ,
+            title: 'Do a test', 
             renderable: <SmallMenu
                 onSelect={onSelectPractice}
                 options={[
                     { title: 'Character Recognition', renderable: <CharacterRecognition /> },
                     { title: 'Vocabulary Test', renderable: <CharacterRecognition /> },
-                    { title: 'Reverse Entrance Test', renderable: <ReverseEntrance /> },
+                    { title: 'Reverse Entrance Test', renderable: <ReverseEntrance /> }
                 ]} />
         },
         { title: 'Writing practice' }
@@ -85,7 +85,7 @@ export default function Home() {
                         if(typeof menuItem === 'string') {
                             return <div className="menu-title">{menuItem}</div>;
                         } else {
-                            return <div onClick={() => {viewportRef.current?.set(menuItem.renderable); menuApi.close();}} className="menu-item">{menuItem.title}</div>;
+                            return <div onClick={() => { viewportRef.current?.set(menuItem.renderable); menuApi.close(); }} className="menu-item">{menuItem.title}</div>;
                         }
                     })}
                 </div>

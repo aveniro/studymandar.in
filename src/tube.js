@@ -2,7 +2,7 @@ export default class Tube {
     array = new Array();
 
     add(x) {
-        this.array.splice(0, 0, [x]);
+        this.array.splice(0, 0, x);
         return this;
     }
 
@@ -11,7 +11,7 @@ export default class Tube {
     }
 
     drop() {
-        this.array.splice(0,1);
+        this.array.splice(0, 1);
         return this;
     }
 

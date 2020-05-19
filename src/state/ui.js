@@ -1,4 +1,4 @@
-import {createStore, createApi} from 'effector';
+import {createApi, createStore} from 'effector';
 
 export const menuStore = createStore('closed');
 

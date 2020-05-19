@@ -1,6 +1,6 @@
 import {h} from 'preact';
-import {useState, useEffect} from 'preact/hooks';
-import {createStore, createEvent} from 'effector';
+import {useEffect, useState} from 'preact/hooks';
+import {createEvent, createStore} from 'effector';
 import {useStore} from 'effector-react';
 
 import '#/component/Toaster.scss';
@@ -29,9 +29,11 @@ function Toast(_) {
 toasts.on(toast, (oldState, toastData) => {
     const toastEl = <Toast data={toastData} />;
 
-    setTimeout(() => {deleteToast();}, 5000);
+    setTimeout(() => {
+        deleteToast();
+    }, 5000);
 
-    return [...oldState,  toastEl];
+    return [...oldState, toastEl];
 });
 
 export function Toaster() {

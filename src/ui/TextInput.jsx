@@ -1,4 +1,4 @@
-import {createRef, h, Component} from 'preact';
+import {Component, createRef, h} from 'preact';
 
 import '#/ui/TextInput.scss';
 

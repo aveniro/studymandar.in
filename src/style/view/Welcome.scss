@@ -9,7 +9,7 @@
     overflow: hidden;
 
     &[data-status="touching"] {
-        transition: 10ms;
+        transition: 20ms;
         transition-timing-function: linear;
     }
 
@@ -75,7 +75,7 @@
     svg {
         width: 0.5em;
         height: 0.5em;
-        fill: rgba(255,255,255,0.7);
+        fill: rgba(255,255,255,0.6);
         margin: 0 1em 0 1em;
 
         &[data-status="active"] {

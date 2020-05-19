@@ -1,4 +1,4 @@
-import {createRef, h, Fragment} from 'preact';
+import {Fragment, createRef, h} from 'preact';
 import {useStore} from 'effector-react';
 
 import firebase from '@/firebase';

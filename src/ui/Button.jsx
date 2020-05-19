@@ -1,4 +1,4 @@
-import {h, Component} from 'preact';
+import {Component, h} from 'preact';
 
 import '#/ui/Button.scss';
 

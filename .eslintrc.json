@@ -2,7 +2,8 @@
     "parser": "babel-eslint",
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "jest": true
     },
     "extends": [
         "eslint:recommended",
@@ -32,6 +33,20 @@
         "semi": ["error", "always"],
         "no-unused-vars": "warn",
         "react/react-in-jsx-scope": "off",
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "comma-style": ["error", "last"],
+        "eqeqeq": "error",
+        "no-multi-spaces": "error",
+        "no-useless-return": "error",
+        "yoda": ["error", "never"],
+        "array-bracket-spacing": "error",
+        "block-spacing": "error",
+        "camelcase": "error",
+        "capitalized-comments": "error",
+        "comma-dangle": "error",
+        "comma-spacing": ["error", {"before": false, "after": true}],
+        "computed-property-spacing": "error",
+        "func-call-spacing": "error",
+        "jsx-quotes": "error"
     }
 }

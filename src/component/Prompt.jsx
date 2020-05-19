@@ -1,4 +1,4 @@
-import {h, Component} from 'preact';
+import {Component, h} from 'preact';
 
 import Button from '@/ui/Button';
 
@@ -29,21 +29,23 @@ export default class Prompt extends Component {
                 <div className="prompt">
                     <div className="prompt-title">{promptText}</div>
                     {actions.map(action => 
-                        <Button key={action.title} title={action.title} onClick={() => {this.resolve(action.callback);}} />
+                        <Button key={action.title} title={action.title} onClick={() => { this.resolve(action.callback); }} />
                     )}
                 </div>
             </div>
         ) : null;
     }
 
-    static yesNo(promptText, callback) {
-        Prompt.get()?.setState({
-            visible: true,
-            promptText: `Do you want to ${promptText}?`,
-            actions: [
-                { title: 'Yes', callback: () => {callback(true);} },
-                { title: 'No', callback: () => {callback(false);} }
-            ]
+    static yesNo(promptText) {
+        return new Promise(resolve => {
+            Prompt.get()?.setState({
+                visible: true,
+                promptText: `Do you want to ${promptText}?`,
+                actions: [
+                    {title: 'Yes', callback: () => { resolve(true); }},
+                    {title: 'No', callback: () => { resolve(false); }}
+                ]
+            });
         });
     }
 

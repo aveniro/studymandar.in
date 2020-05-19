@@ -7,11 +7,12 @@ const mode = process.env.NODE_ENV;
 
 module.exports = {
 	entry: {
-		index: './src/index.js'
+		index: './src/index.js',
+		firebase: './src/firebase.js'
 	},
 	mode,
 	output: {
-		filename: 'bundle.js',
+		filename: '[name].bundle.[hash].js',
 		path: path.resolve(__dirname, 'dist')
 	},
 	resolve: {
@@ -53,6 +54,9 @@ module.exports = {
         hot: true
 	},
 	optimization: {
+		splitChunks: {
+			chunks: 'all'	
+		},
 		minimize: mode === 'production',
 		minimizer: [new TerserPlugin({
 			extractComments:false,

@@ -6,7 +6,7 @@ export default function SmallMenu(_) {
     return (
         <div className="small-menu">
             {_.options?.map(option => 
-                <div onClick={() => {_.onSelect?.(option);}} className="small-menu-option">
+                <div onClick={() => { _.onSelect?.(option); }} className="small-menu-option">
                     {option.title}
                 </div>
             )}

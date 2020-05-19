@@ -1,4 +1,4 @@
-import {createRef, h, Component} from 'preact';
+import {Component, createRef, h} from 'preact';
 import Prompt from '@/component/Prompt';
 
 import TextInput from '@/ui/TextInput';
@@ -41,7 +41,7 @@ export default class WordEdit extends Component {
     };
     
     confirmDelete = () => {
-        Prompt.yesNo(`delete ${this.scriptRef.current.value()}`, response => {
+        Prompt.yesNo(`delete ${this.scriptRef.current.value()}`).then(response => {
             response && this.props.onWordDelete?.(this.submitValue());
         });
         

@@ -1,4 +1,4 @@
-import {createStore, createApi} from 'effector';
+import {createApi, createStore} from 'effector';
 import {userState} from 'state/user';
 import {v4 as uuidv4} from 'uuid';
 

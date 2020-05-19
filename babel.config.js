@@ -1,4 +1,4 @@
-const isProduction = process.env.NODE_ENV === 'production';
+const useHotReload = process.env.NODE_ENV === 'development';
 
 module.exports = {
 	presets: ["@babel/preset-env"],
@@ -9,6 +9,6 @@ module.exports = {
 		}],
 		"@babel/plugin-proposal-class-properties",
 		"@babel/plugin-proposal-optional-chaining",
-		...(!isProduction ? ['react-refresh/babel'] : [])
+		...(useHotReload ? ['react-refresh/babel'] : [])
  	]
 }
