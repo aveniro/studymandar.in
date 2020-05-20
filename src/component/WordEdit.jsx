@@ -4,6 +4,8 @@ import Prompt from '@/component/Prompt';
 import TextInput from '@/ui/TextInput';
 import Button from '@/ui/Button';
 
+import regex from '@/regex';
+
 import '#/component/WordEdit.scss';
 
 export default class WordEdit extends Component {
@@ -59,9 +61,9 @@ export default class WordEdit extends Component {
         return (
             <div className="word-edit">
                 <div className="word-information">
-                    <TextInput ref={this.scriptRef} start={_.template?.script} regex={/^[^a-zA-Z\d\s]+$/} hint="中文" title="Chinese Script" />
-                    <TextInput ref={this.pinyinRef} start={_.template?.pinyin} regex={/^([a-z]{2,7}\d\s?)+$/} hint="zhong1 wen2" title="Pinyin" />
-                    <TextInput ref={this.translationRef} start={_.template?.translation} regex={/^.{0,100}$/} hint="chinese language" title="Translation" />
+                    <TextInput ref={this.scriptRef} start={_.template?.script} regex={regex.chineseScript} hint="中文" title="Chinese Script" />
+                    <TextInput ref={this.pinyinRef} start={_.template?.pinyin} regex={regex.pinyin} hint="zhong1 wen2" title="Pinyin" />
+                    <TextInput ref={this.translationRef} start={_.template?.translation} regex={regex.translation} hint="chinese language" title="Translation" />
 
                     <Button onClick={this.submit} title="Save Word" />
                 </div>
