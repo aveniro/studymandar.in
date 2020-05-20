@@ -1,4 +1,4 @@
-import {h, Fragment}                   from 'preact';
+import {h, Fragment}         from 'preact';
 import {useCallback, useRef} from 'preact/hooks';
 import {useStore}            from 'effector-react';
 
