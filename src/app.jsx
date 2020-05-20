@@ -4,8 +4,7 @@ import Router from 'preact-router';
 import(/* webpackChunkName "firebase" */ '@/firebase');
 
 import Home from '@/view/Home';
-import Login from '@/view/Login';
-import Register from '@/view/Register';
+import LoginRegister from '@/view/LoginRegister';
 import Welcome from '@/view/Welcome';
 
 import {Toaster} from '@/component/Toaster';
@@ -28,8 +27,7 @@ class App extends Component {
 	            <div className="content">
 	                <Router>
 	                    <Home path="/" />
-	                    <Login path="/login" />
-	                    <Register path="/register" />
+	                    <LoginRegister path="/start" />
 	                    <Welcome path="/welcome" />
 	                </Router>
 	            </div>
