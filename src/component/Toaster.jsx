@@ -1,7 +1,7 @@
-import {h} from 'preact';
-import {useEffect, useState} from 'preact/hooks';
+import {h}                        from 'preact';
+import {useEffect, useState}      from 'preact/hooks';
 import {createEvent, createStore} from 'effector';
-import {useStore} from 'effector-react';
+import {useStore}                 from 'effector-react';
 
 import '#/component/Toaster.scss';
 

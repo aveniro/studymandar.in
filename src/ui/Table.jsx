@@ -1,7 +1,7 @@
-import {h} from 'preact';
+import {h}                              from 'preact';
 import {useCallback, useMemo, useState} from 'preact/hooks';
-import {createEvent} from 'effector';
-import {useStore} from 'effector-react';
+import {createEvent}                    from 'effector';
+import {useStore}                       from 'effector-react';
 
 import '#/ui/Table.scss';
 

@@ -10,8 +10,6 @@ import Welcome from '@/view/Welcome';
 import {Toaster} from '@/component/Toaster';
 import Loader from '@/component/Loader';
 
-import TopBar from '@/component/TopBar';
-
 import Prompt from '@/component/Prompt';
 
 import '@/style/common.scss';
@@ -22,8 +20,6 @@ class App extends Component {
 	render() {
 	    return (
 	        <div id="app">
-	            <TopBar />
-				
 	            <div className="content">
 	                <Router>
 	                    <Home path="/" />

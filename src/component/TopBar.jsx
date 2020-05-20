@@ -1,6 +1,6 @@
-import {h} from 'preact';
+import {h}        from 'preact';
 import {useStore} from 'effector-react';
-import {Link} from 'preact-router/match';
+import {Link}     from 'preact-router/match';
 
 import {userState} from 'state/user';
 
@@ -18,8 +18,7 @@ export default function TopBar() {
             {
                 user ? <LoggedInUser /> : 
                     <div className="login-register-buttons">
-                        <Link activeClassName="active" href="/login">Login</Link>
-                        <Link activeClassName="active" href="/register">Register</Link>
+                        <Link activeClassName="active" href="/start">Start</Link>
                     </div>
             }
         </div>

@@ -1,6 +1,6 @@
 import {createApi, createStore} from 'effector';
-import {userState} from 'state/user';
-import {v4 as uuidv4} from 'uuid';
+import {userState}              from 'state/user';
+import {v4 as uuidv4}           from 'uuid';
 
 import firebase from '@/firebase';
 

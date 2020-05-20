@@ -1,5 +1,5 @@
-import {h} from 'preact';
-import Enzyme from 'enzyme';
+import {h}     from 'preact';
+import Enzyme  from 'enzyme';
 import Adapter from 'enzyme-adapter-preact-pure';
 
 import Prompt from '@/component/Prompt';

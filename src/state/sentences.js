@@ -1,5 +1,5 @@
 import {createApi, createStore} from 'effector';
-import {userState} from 'state/user';
+import {userState}              from 'state/user';
 
 import firebase from '@/firebase';
 

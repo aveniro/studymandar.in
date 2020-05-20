@@ -1,11 +1,11 @@
-.login-container, .register-container {
+.login-register-container {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    .login, .register {
+    .login-register {
         border: 1px solid rgba(0,0,0,0.2);
         border-radius: 0.2em;
         padding: 1em;

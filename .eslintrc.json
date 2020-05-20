@@ -25,7 +25,7 @@
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    "plugins": ["react"],
+    "plugins": ["react", "align-import"],
     "rules": {
         "indent": ["error", 4],
         "linebreak-style": ["error", "unix"],
@@ -36,7 +36,7 @@
         "react/prop-types": "off",
         "comma-style": ["error", "last"],
         "eqeqeq": "error",
-        "no-multi-spaces": "error",
+        "no-multi-spaces": ["error", {"exceptions": {"ImportDeclaration": true}}],
         "no-useless-return": "error",
         "yoda": ["error", "never"],
         "array-bracket-spacing": "error",
@@ -46,6 +46,7 @@
         "comma-spacing": ["error", {"before": false, "after": true}],
         "computed-property-spacing": "error",
         "func-call-spacing": "error",
-        "jsx-quotes": "error"
+        "jsx-quotes": "error",
+        "align-import/align-import": "error"
     }
 }

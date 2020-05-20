@@ -1,7 +1,7 @@
-import {h} from 'preact';
-import Enzyme from 'enzyme';
+import {h}     from 'preact';
+import Enzyme  from 'enzyme';
 import Adapter from 'enzyme-adapter-preact-pure';
-import Loader from '@/component/Loader';
+import Loader  from '@/component/Loader';
 
 import {loadApi} from 'state/ui';
 

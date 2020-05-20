@@ -3,7 +3,7 @@ import 'firebase/analytics';
 import 'firebase/auth';
 import 'firebase/firestore';
 
-import { route } from 'preact-router';
+import {route} from 'preact-router';
 
 import firebaseConfig from 'config/firebase';
 
@@ -51,7 +51,9 @@ firebase.auth().onAuthStateChanged(user => {
 
         route('/');
     } else {
-        route('/welcome');
+        if(window.location.pathname !== '/start') {
+            route('/welcome');
+        }        
     }
 
     userApi.updateUser(user);

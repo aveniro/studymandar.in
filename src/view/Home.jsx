@@ -1,22 +1,24 @@
-import {h} from 'preact';
+import {h, Fragment}                   from 'preact';
 import {useCallback, useRef} from 'preact/hooks';
-import {useStore} from 'effector-react';
+import {useStore}            from 'effector-react';
 
-import {wordsApi} from 'state/words';
+import {wordsApi}           from 'state/words';
 import {menuApi, menuStore} from 'state/ui';
 
 import Viewport from '@/component/Viewport';
 
 import {toast} from '@/component/Toaster';
 
-import WordEdit from '@/component/WordEdit';
-import Words from '@/component/Words';
+import TopBar from '@/component/TopBar';
+
+import WordEdit  from '@/component/WordEdit';
+import Words     from '@/component/Words';
 import Sentences from '@/component/Sentences';
 import SmallMenu from '@/component/SmallMenu';
 
 import '#/view/Home.scss';
 import CharacterRecognition from '@/component/practice/CharacterRecognition';
-import ReverseEntrance from '@/component/practice/ReverseEntrance';
+import ReverseEntrance      from '@/component/practice/ReverseEntrance';
 
 export default function Home() {
     const viewportRef = useRef(null);
@@ -71,26 +73,29 @@ export default function Home() {
     ];
 
     return (
-        <div className="home">
-            <div data-status={menuState} className="menu">
-                <div className="hamburger">
-                    <div className="hamburger-wrapper">
-                        <div className="sujetador">
-                            <svg data-status={menuState} onClick={menuApi.toggle} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        <Fragment>
+            <TopBar />
+            <div className="home">
+                <div data-status={menuState} className="menu">
+                    <div className="hamburger">
+                        <div className="hamburger-wrapper">
+                            <div className="sujetador">
+                                <svg data-status={menuState} onClick={menuApi.toggle} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                            </div>
                         </div>
                     </div>
+                    <div className="menu-items">
+                        {menuItems.map(menuItem => {
+                            if(typeof menuItem === 'string') {
+                                return <div className="menu-title">{menuItem}</div>;
+                            } else {
+                                return <div onClick={() => { viewportRef.current?.set(menuItem.renderable); menuApi.close(); }} className="menu-item">{menuItem.title}</div>;
+                            }
+                        })}
+                    </div>
                 </div>
-                <div className="menu-items">
-                    {menuItems.map(menuItem => {
-                        if(typeof menuItem === 'string') {
-                            return <div className="menu-title">{menuItem}</div>;
-                        } else {
-                            return <div onClick={() => { viewportRef.current?.set(menuItem.renderable); menuApi.close(); }} className="menu-item">{menuItem.title}</div>;
-                        }
-                    })}
-                </div>
+                <Viewport base={<div>Welcome to chinese helper!</div>} ref={viewportRef} />
             </div>
-            <Viewport base={<div>Welcome to chinese helper!</div>} ref={viewportRef} />
-        </div>
+        </Fragment>
     );
 }

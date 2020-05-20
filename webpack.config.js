@@ -2,10 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const mode = process.env.NODE_ENV;
+const analyze = process.env.ANALYZE;
 
 module.exports = {
 	entry: {
@@ -43,7 +44,8 @@ module.exports = {
                 'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
             }
 		}),
-		new CleanWebpackPlugin()
+		new CleanWebpackPlugin(),
+		...(analyze === 'true' ? [new BundleAnalyzerPlugin()] : [])
 	],
 	devServer: {
         port: 9000,

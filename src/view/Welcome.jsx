@@ -1,5 +1,5 @@
 import {Component, Fragment, createRef, h} from 'preact';
-import {route} from 'preact-router';
+import {route}                             from 'preact-router';
 
 import Button from '@/ui/Button';
 
@@ -22,11 +22,11 @@ export default class Welcome extends Component {
             i: 4, 
             title: 'chinese-helper', 
             body: 'Well, what are you waiting for?', 
-            color: '#FF595E',
+            color: '#9B1D20',
             action: {
                 title: 'Get Started',
                 action: () => {
-                    route('/register');
+                    route('/start');
                 }
             }
         }

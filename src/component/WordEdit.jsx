@@ -1,8 +1,8 @@
 import {Component, createRef, h} from 'preact';
-import Prompt from '@/component/Prompt';
+import Prompt                    from '@/component/Prompt';
 
 import TextInput from '@/ui/TextInput';
-import Button from '@/ui/Button';
+import Button    from '@/ui/Button';
 
 import regex from '@/regex';
 
