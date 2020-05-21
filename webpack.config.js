@@ -12,7 +12,7 @@ module.exports = {
 	entry: {
 		index: './src/index.js'	
 	},
-	devtool: 'source-map',
+	devtool: mode === 'development' ? 'source-map' : false,
 	mode,
 	output: {
 		filename: '[name].bundle.[hash].js',

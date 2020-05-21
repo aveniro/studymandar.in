@@ -8,7 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack",
     "serve:prod": "npm run build && serve",
     "analyze": "cross-env ANALYZE=true NODE_ENV=production webpack",
-    "lint": "eslint src/**/*.jsx src/**/*.js test/**/*.js --fix",
+    "lint": "eslint src/*.js src/*.jsx src/**/*.jsx src/**/*.js test/**/*.js --fix",
     "test": "jest",
     "deploy": "npm run lint && npm run test && npm run build && ./gh-deploy.sh"
   },

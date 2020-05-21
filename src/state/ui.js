@@ -7,7 +7,7 @@ export const menuApi = createApi(menuStore, {
     close: () => 'closed'
 });
 
-export const loadStore = createStore('active');
+export const loadStore = createStore('inactive');
 
 export const loadApi = createApi(loadStore, {
     start: () => 'active',

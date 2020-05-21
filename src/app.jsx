@@ -1,4 +1,4 @@
-import {h, render, Component} from 'preact';
+import {h, createRef, render, Component} from 'preact';
 import Router from 'preact-router';
 import lazy from '@/lazy';
 
@@ -13,16 +13,38 @@ import Loader from '@/component/Loader';
 
 import Prompt from '@/component/Prompt';
 
+import {loadApi} from 'state/ui';
+
 import '@/style/common.scss';
 
 class App extends Component {
-	state = {};
+	contentBox = createRef();
+
+	handleRoute = () => {
+		window.requestAnimationFrame(() => {
+			this.contentBox.current.classList.remove('fade');
+			this.contentBox.current.classList.add('fade');
+		});
+	};
+
+	componentDidMount() {
+		switch(window.location.pathname) {
+			case '/welcome': {
+				break;
+			}
+
+			default: {
+				loadApi.start();
+				break;
+			}
+		}
+	}
 
 	render() {
 	    return (
 	        <div id="app">
-	            <div className="content">
-	                <Router>
+	            <div ref={this.contentBox} className="content">
+	                <Router onChange={this.handleRoute}>
 	                    <Home path="/" />
 	                    <LoginRegister path="/start" />
 	                    <Welcome path="/welcome" />

@@ -1,9 +1,10 @@
-import {createApi, createStore} from 'effector';
+import {createEvent, createApi, createStore} from 'effector';
 
 export const userState = createStore(null);
 
-export const userApi = createApi(userState, {
-    updateUser: (userState, newState) => {
-        return newState;
-    }
-});
+export const userApi = {
+    updateUser: createEvent(),
+    requestLoginRegister: createEvent()
+};
+
+userState.on(userApi.updateUser, (userState, newState) => newState);

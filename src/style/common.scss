@@ -27,6 +27,22 @@ body, html, #app, .content, .home {
     flex-direction: column;
 }
 
+.content {
+    &.fade {
+        animation: content-fade 200ms ease-in-out forwards;
+    }
+
+    @keyframes content-fade {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}
+
 // Colors
 $button-color: rgb(42, 147, 196);
 $button-color-hover: rgb(39, 147, 197);
