@@ -1,7 +1,9 @@
 const useHotReload = process.env.NODE_ENV === 'development';
 
 module.exports = {
-	presets: ["@babel/preset-env"],
+	presets: [
+		"@babel/preset-env"
+	],
 	plugins: [
 	    ["@babel/plugin-transform-react-jsx", {
 	     	"pragma": "h",

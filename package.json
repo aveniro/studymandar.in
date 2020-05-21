@@ -54,6 +54,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
     "node-sass": "^4.14.1",
+    "preact-async-route": "^2.2.1",
     "preact-router": "^3.2.1",
     "react-refresh": "^0.8.2",
     "regenerator-runtime": "^0.13.5",

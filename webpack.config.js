@@ -12,6 +12,7 @@ module.exports = {
 	entry: {
 		index: './src/index.js'	
 	},
+	devtool: 'source-map',
 	mode,
 	output: {
 		filename: '[name].bundle.[hash].js',
@@ -48,7 +49,7 @@ module.exports = {
 		...(analyze === 'true' ? [new BundleAnalyzerPlugin()] : [])
 	],
 	devServer: {
-        port: 9000,
+        port: 8999,
         disableHostCheck: true,
         historyApiFallback: true,
         host: '0.0.0.0',

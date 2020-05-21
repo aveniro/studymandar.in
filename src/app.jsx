@@ -1,11 +1,12 @@
 import {h, render, Component} from 'preact';
 import Router from 'preact-router';
+import lazy from '@/lazy';
 
-import(/* webpackChunkName "firebase" */ '@/firebase');
+import(/* webpackChunkName: "firebase" */ '@/firebase');
 
-import Home from '@/view/Home';
-import LoginRegister from '@/view/LoginRegister';
-import Welcome from '@/view/Welcome';
+const Home = lazy(import(/* webpackChunkName: "Home" */ '@/view/Home'));
+const LoginRegister = lazy(import(/* webpackChunkName: "LoginRegister" */ '@/view/LoginRegister'));
+const Welcome = lazy(import(/* webpackChunkName: "Welcome" */ '@/view/Welcome'));
 
 import {Toaster} from '@/component/Toaster';
 import Loader from '@/component/Loader';
