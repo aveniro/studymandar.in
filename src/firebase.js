@@ -8,9 +8,9 @@ import {route} from 'preact-router';
 import firebaseConfig from 'config/firebase';
 
 import {userApi, userState} from 'state/user';
-import {wordsApi} from 'state/words';
-import {sentencesApi} from 'state/sentences';
-import {loadApi} from 'state/ui';
+import {wordsApi}           from 'state/words';
+import {sentencesApi}       from 'state/sentences';
+import {loadApi}            from 'state/ui';
 
 import {toast} from '@/component/Toaster';
 
@@ -91,7 +91,7 @@ wordsApi.addWord.watch(newWord => {
 
 wordsApi.deleteWord.watch(word => {
     firebase.firestore().collection('users').doc(userState.getState().uid).collection('words').doc(word.id).delete();
-})
+});
 
 // Connect to sentences api
 sentencesApi.addSentence.watch(newSentence => {

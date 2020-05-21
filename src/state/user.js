@@ -1,4 +1,4 @@
-import {createEvent, createApi, createStore} from 'effector';
+import {createEvent, createStore} from 'effector';
 
 export const userState = createStore(null);
 

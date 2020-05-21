@@ -23,4 +23,4 @@ export default class Tube {
     size() {
         return this.array.length;
     }
-};
+}

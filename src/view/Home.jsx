@@ -7,7 +7,7 @@ import {menuApi, menuStore} from 'state/ui';
 
 import Viewport from '@/component/Viewport';
 
-import {v4 as uuidv4}           from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 import {toast} from '@/component/Toaster';
 
