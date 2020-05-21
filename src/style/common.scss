@@ -28,8 +28,10 @@ body, html, #app, .content, .home {
 }
 
 .content {
+    opacity: 1;
+
     &.fade {
-        animation: content-fade 200ms ease-in-out forwards;
+        animation: content-fade 300ms ease-in-out forwards;
     }
 
     @keyframes content-fade {

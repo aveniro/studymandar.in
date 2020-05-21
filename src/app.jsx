@@ -21,10 +21,13 @@ class App extends Component {
 	contentBox = createRef();
 
 	handleRoute = () => {
-		window.requestAnimationFrame(() => {
-			this.contentBox.current.classList.remove('fade');
+		console.log('routing');
+		window.requestAnimationFrame(() => { 
 			this.contentBox.current.classList.add('fade');
-		});
+			setTimeout(() => {
+				this.contentBox.current.classList.remove('fade');
+			}, 300);
+		 });
 	};
 
 	componentDidMount() {
