@@ -16,6 +16,8 @@ import {toast} from '@/component/Toaster';
 
 firebase.initializeApp(firebaseConfig);
 
+firebase.firestore().enablePersistence();
+
 // Authentication
 firebase.auth().onAuthStateChanged(user => {
     if(user) {
