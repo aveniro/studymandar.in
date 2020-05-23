@@ -70,6 +70,22 @@ export default class Welcome extends Component {
         }
     };
 
+    keydown = e => {
+        if(e.key === 'ArrowLeft') {
+            this.pageBack();
+        } else if(e.key === 'ArrowRight') {
+            this.pageNext();
+        }
+    };
+
+    componentDidMount() {
+        document.addEventListener('keydown', this.keydown);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.keydown);
+    }
+
     render(_, {touching, displacement}) {
         return (
             <Fragment>
