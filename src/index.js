@@ -1,5 +1,7 @@
 /* eslint-disable */
 if (env.NODE_ENV === 'development') {
+    require('preact/debug');
+
     console.log('Hotloading enabled!');
     // Inject react-hot-loader
     const runtime = require('react-refresh/runtime');
