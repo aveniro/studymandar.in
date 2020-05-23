@@ -11,20 +11,33 @@
 
     background: #3891A6;
 
-    svg {
-        animation: spin 750ms ease-in-out infinite;
-
-        @keyframes spin {
-            from {
-                transform: rotateZ(0deg);
-            }
-
-            to {
-                transform: rotateZ(360deg);
+    .load-box {
+        svg {
+            animation: spin 750ms ease-in-out infinite;
+    
+            @keyframes spin {
+                from {
+                    transform: rotateZ(0deg);
+                }
+    
+                to {
+                    transform: rotateZ(360deg);
+                }
             }
         }
     }
 
+    .message-area {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        color: white;
+        padding: 3em;
+        text-align: center;
+    }
+    
     &[data-status="active"] {
         opacity: 1;
     }
