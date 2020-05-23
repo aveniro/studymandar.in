@@ -2,8 +2,6 @@ import {h, createRef, render, Component} from 'preact';
 import Router                            from 'preact-router';
 import lazy                              from '@/lazy';
 
-import(/* webpackChunkName: "firebase" */ '@/firebase');
-
 const Home = lazy(() => import(/* webpackChunkName: "Home" */ '@/view/Home'));
 const LoginRegister = lazy(() => import(/* webpackChunkName: "LoginRegister" */ '@/view/LoginRegister'));
 const Welcome = lazy(() => import(/* webpackChunkName: "Welcome" */ '@/view/Welcome'));
@@ -31,6 +29,8 @@ class App extends Component {
     };
 
     componentDidMount() {
+        import(/* webpackChunkName: "firebase" */ '@/firebase');
+
         switch(window.location.pathname) {
         case '/welcome': {
             break;
