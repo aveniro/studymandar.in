@@ -5,7 +5,7 @@ export default function lazy(importPromise, loading = null) {
         state = {component: loading};
 
         componentDidMount() {
-            importPromise.then(({default: component}) => { this.setState({component: h(component, this.props, this.props.children)}); });
+            importPromise().then(({default: component}) => { this.setState({component: h(component, this.props, this.props.children)}); });
         }
 
         render(_, {component}) {
