@@ -18,7 +18,7 @@ export default class PracticeModality extends Component {
     responseType = PracticeModality.RESPONSE_WRITTEN;
 
     // Control
-    focusEl = createRef();
+    responseEl = createRef();
 
     // Hints
     responseTitle = 'Response';
@@ -39,7 +39,11 @@ export default class PracticeModality extends Component {
      * and call onCorrect() or onIncorrect appropriately
      */
     check = () => {
-        
+        if(this.responseEl.current?.value() === this.state.answer) {
+            this.onCorrect();
+        } else {
+            this.onIncorrect();
+        }
     };
 
     onKeydown = e => {
@@ -56,6 +60,7 @@ export default class PracticeModality extends Component {
     }
 
     next() {
+        this.responseEl.current?.clear();
         this.setState(this.getQuestion());
     }
 
@@ -64,7 +69,7 @@ export default class PracticeModality extends Component {
     }
 
     onIncorrect() {
-        this.props.onCorrect?.();
+        this.props.onIncorrect?.(this.state.answer);
     }
 
     componentDidMount() {
@@ -72,7 +77,7 @@ export default class PracticeModality extends Component {
             document.addEventListener('keydown', this.onKeydown);
         }
 
-        this.focusEl.current?.focus();
+        this.responseEl.current?.focus();
 
         this.next();
     }
@@ -113,7 +118,7 @@ export default class PracticeModality extends Component {
             case PracticeModality.RESPONSE_WRITTEN: {
                 responseEl = (
                     <div className="response-text">
-                        <TextInput ref={this.focusEl} title={this.responseTitle} hint={this.responseHint} />
+                        <TextInput ref={this.responseEl} title={this.responseTitle} hint={this.responseHint} />
                     </div>
                 );
                 break;
