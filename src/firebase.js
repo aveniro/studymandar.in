@@ -125,6 +125,8 @@ userApi.requestLoginRegister.watch(({email, pass}) => {
                     break;
                 }
                 }
+
+                userApi.rejectLoginRegister();
             });
             break;
         }
@@ -139,6 +141,8 @@ userApi.requestLoginRegister.watch(({email, pass}) => {
             break;
         }
         }
+
+        if(e.code !== 'auth/user-not-found') userApi.rejectLoginRegister();
     });
 });
 

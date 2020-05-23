@@ -1,5 +1,5 @@
 import {Fragment, createRef, h} from 'preact';
-import {useCallback, useEffect} from 'preact/hooks';
+import {useCallback, useEffect, useState} from 'preact/hooks';
 import {useStore}               from 'effector-react';
 
 import {userApi, userState} from 'state/user';
@@ -13,16 +13,19 @@ import '#/view/LoginRegister.scss';
 
 export default function LoginRegister() {
     const user = useStore(userState);
+    const [loading, setLoading] = useState(false);
 
     const emailRef = createRef();
     const passwordRef = createRef();
 
     const doLoginRegister = useCallback(() => {
+        setLoading(true);
+
         const email = emailRef.current.value();
         const pass = passwordRef.current.value();
 
         userApi.requestLoginRegister({email, pass});
-    });
+    }, [emailRef, passwordRef, setLoading]);
 
     useEffect(() => {        
         const keydown = e => {
@@ -32,7 +35,12 @@ export default function LoginRegister() {
         };
         document.addEventListener('keydown', keydown);
 
+        const unwatch = userApi.rejectLoginRegister.watch(() => {
+            setLoading(false);
+        });
+
         return () => {
+            unwatch();
             document.removeEventListener('keydown', keydown);
         };
     }, [doLoginRegister]);
@@ -45,7 +53,7 @@ export default function LoginRegister() {
             <Fragment>
                 <TextInput ref={emailRef} regex={regex.email} hint="user@example.com" title="Email" />
                 <TextInput ref={passwordRef} regex={regex.password} hint="hunter2" title="Password" secure={true} />
-                <Button onClick={doLoginRegister} title="Start" />
+                <Button loading={loading} onClick={doLoginRegister} title="Start" />
             </Fragment>
         );
     }
