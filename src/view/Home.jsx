@@ -7,7 +7,7 @@ import {menuApi, menuStore} from 'state/ui';
 
 import Viewport from '@/component/Viewport';
 
-import {v4 as uuidv4} from 'uuid';
+import uid from '@/uid';
 
 import {toast} from '@/component/Toaster';
 
@@ -28,7 +28,7 @@ export default function Home() {
 
     // Callbacks
     const onWordAdded = useCallback(word => {
-        wordsApi.addWord({...word, id: uuidv4(), ocrTested: 0, ocrCorrect: 0, vocabTested: 0, vocabCorrect: 0});
+        wordsApi.addWord({...word, id: uid(), ocrTested: 0, ocrCorrect: 0, vocabTested: 0, vocabCorrect: 0});
         toast({title: `${word.script} Successfully Added!`});
     });
 
