@@ -1,0 +1,80 @@
+.big-boy-practice {
+    width: 100%;
+    height: 100%;
+
+    .progress {
+        height: 1.5em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .point-display {
+            line-height: 1.5em;
+            height: 100%;
+        }
+
+        .progress-bar-container {
+            height: 100%;
+            flex-grow: 1000;
+            margin-left: 1em;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 1em;
+            overflow: hidden;
+            
+            .progress-bar {
+                width: 100%;
+                height: 100%;
+                transform-origin: left;
+                transition: 300ms;
+                
+                &[data-status="good"] {
+                    background: #697A21;
+                }
+
+                &[data-status="bad"] {
+                    background: #C1292E;
+                }
+            }
+        }
+    }
+
+    .practice-window {
+        width: 100%;
+        height: 100%;
+        padding: 2em;
+    }
+
+    .bboy-practice-controls {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        .send-button {
+            background: #29BF12;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 0.75em;
+            border-radius: 0.5em;
+            cursor: pointer;
+
+            transition: 300ms;
+
+            &:hover {
+                filter: brightness(0.95);
+            }
+
+            &:active {
+                filter: brightness(0.9);
+            }
+
+            svg {
+                width: 2em;
+                height: 2em;
+                fill: white;
+            }
+        }
+    }
+}
