@@ -19,8 +19,8 @@ import Sentences from '@/component/Sentences';
 import SmallMenu from '@/component/SmallMenu';
 
 import '#/view/Home.scss';
-import CharacterRecognition from '@/component/practice/CharacterRecognition';
-import ReverseEntrance      from '@/component/practice/ReverseEntrance';
+import {CharacterRecognition, ReverseEntrance} from '@/component/practice/modalities';
+import BigBoyPractice from '@/component/practice/BigBoyPractice';
 
 export default function Home() {
     const viewportRef = useRef(null);
@@ -66,6 +66,7 @@ export default function Home() {
             renderable: <SmallMenu
                 onSelect={onSelectPractice}
                 options={[
+                    { title: 'Chinese Practice', renderable: <BigBoyPractice confirmLeave={true} /> },
                     { title: 'Character Recognition', renderable: <CharacterRecognition /> },
                     { title: 'Vocabulary Test', renderable: <CharacterRecognition /> },
                     { title: 'Reverse Entrance Test', renderable: <ReverseEntrance /> }

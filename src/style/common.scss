@@ -16,13 +16,13 @@ body {
     position: relative;
 }
 
-body, html, #app, .content, .home {
+body, html, #app, .content {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
 }
 
-#app {
+#app, .content {
     display: flex;
     flex-direction: column;
 }

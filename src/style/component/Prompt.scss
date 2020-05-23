@@ -6,11 +6,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
 
     animation: fade-in 50ms ease-in forwards;
+    animation: blur-out 300ms ease-in forwards;
 
     .prompt {
         background: white;
@@ -21,10 +19,11 @@
         border-radius: 0.25em;
         padding: 1em;
 
-        animation: prompt-in 50ms ease-out forwards;
+        animation: prompt-in 100ms ease-out forwards;
 
         .prompt-title {
             margin-bottom: 1em;
+            padding: 1em;
         }
 
         .button {
@@ -33,7 +32,7 @@
 
         @keyframes prompt-in {
             from {
-                transform: scale(0.98) translateY(0.4em);
+                transform: scale(0.99) translateY(0.6em);
             }
 
             to {
@@ -49,6 +48,20 @@
 
         to {
             opacity: 1;
+        }
+    }
+
+    @keyframes blur-out {
+        from {
+            background: transparent;
+            backdrop-filter: blur(0);
+            -webkit-backdrop-filter: blur(0);
+        }
+
+        to {
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
         }
     }
 }

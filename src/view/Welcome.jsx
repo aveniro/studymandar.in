@@ -61,7 +61,6 @@ export default class Welcome extends Component {
     };
 
     touchCancel = () => {
-        console.log('cancel');
         this.setState({touching: false});
     };
 
