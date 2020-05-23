@@ -9,6 +9,10 @@
     text-align: center;
     transition: 300ms;
     user-select: none;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
         background: $button-color-hover;
@@ -16,5 +20,39 @@
 
     &:active {
         background: $button-color-active;
+    }
+
+    $svgsize: 1em;
+    $svgpad: 0.5em;
+
+    > svg {
+        width: $svgsize;
+        height: $svgsize;
+        margin-right: $svgpad;
+        transition: 300ms;
+    }
+
+    &[data-status="loading"] {
+        > svg { 
+            animation: spin 750ms ease-in-out infinite;
+
+            @keyframes spin {
+                from {
+                    transform: rotateZ(0deg);
+                }
+
+                to {
+                    transform: rotateZ(360deg);
+                }
+            }
+        }
+    }
+
+    &[data-status="not-loading"] {
+        > svg {
+            opacity: 0;
+            width: 0;
+            padding-right: 0;
+        }
     }
 }
