@@ -1,6 +1,6 @@
-import {Fragment, createRef, h} from 'preact';
+import {Fragment, createRef, h}           from 'preact';
 import {useCallback, useEffect, useState} from 'preact/hooks';
-import {useStore}               from 'effector-react';
+import {useStore}                         from 'effector-react';
 
 import {userApi, userState} from 'state/user';
 

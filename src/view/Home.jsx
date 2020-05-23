@@ -20,7 +20,7 @@ import SmallMenu from '@/component/SmallMenu';
 
 import '#/view/Home.scss';
 import {CharacterRecognition, ReverseEntrance} from '@/component/practice/modalities';
-import BigBoyPractice from '@/component/practice/BigBoyPractice';
+import BigBoyPractice                          from '@/component/practice/BigBoyPractice';
 
 export default function Home() {
     const viewportRef = useRef(null);

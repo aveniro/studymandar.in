@@ -13,7 +13,7 @@ import Loader    from '@/component/Loader';
 
 import Prompt from '@/component/Prompt';
 
-import {loadApi} from 'state/ui';
+import {loadApi}   from 'state/ui';
 import {userState} from 'state/user';
 
 import '@/style/common.scss';
