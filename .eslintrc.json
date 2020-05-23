@@ -47,7 +47,6 @@
         "computed-property-spacing": "error",
         "func-call-spacing": "error",
         "jsx-quotes": "error",
-        "align-import/align-import": "error",
-        "no-useless-escape": "off"
+        "align-import/align-import": "error"
     }
 }
