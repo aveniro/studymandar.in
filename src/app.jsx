@@ -4,7 +4,7 @@ import lazy                              from '@/lazy';
 
 const Home = lazy(() => import(/* webpackChunkName: "Home" */ '@/view/Home'));
 const LoginRegister = lazy(() => import(/* webpackChunkName: "LoginRegister" */ '@/view/LoginRegister'));
-const Welcome = lazy(() => import(/* webpackChunkName: "Welcome" */ '@/view/Welcome'));
+const Welcome = lazy(() => import(/* webpackChunkName: "Welcome" */ '@/view/Welcome'), { preload: LoginRegister });
 
 import {Toaster} from '@/component/Toaster';
 import Loader    from '@/component/Loader';
