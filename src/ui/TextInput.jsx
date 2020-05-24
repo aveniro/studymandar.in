@@ -7,6 +7,14 @@ export default class TextInput extends Component {
 
     textBoxRef = createRef();
 
+    enable = () => {
+        if(this.textBoxRef.current) this.textBoxRef.current.disabled = false;
+    };
+
+    disable = () => {
+        if(this.textBoxRef.current) this.textBoxRef.current.disabled = true;
+    };
+
     value = () => {
         return this.textBoxRef.current?.value;
     };
@@ -39,7 +47,7 @@ export default class TextInput extends Component {
 
     render(_, { status }) {
         return (
-            <div data-status={status} className="text-input">
+            <div data-status={_.status || status} className="text-input">
                 <div className="text-input-title"> { _.title } </div>
                 <input ref={this.textBoxRef} onChange={this.onInput} onInput={this.onInput} placeholder={ _.hint } type={_.secure ? 'password' : 'text'}/>
             </div>

@@ -27,6 +27,7 @@ export default class PracticeModality extends Component {
     state = {
         question: null,
         answer: null,
+        status: 'nominal',
         multipleChoiceOptions: []
     };
 
@@ -61,15 +62,20 @@ export default class PracticeModality extends Component {
 
     next() {
         this.responseEl.current?.clear();
-        this.setState(this.getQuestion());
+        this.responseEl.current?.focus();
+        this.responseEl.current?.enable();
+        this.setState({status: 'nominal', ...this.getQuestion()});
     }
 
     onCorrect() {
         this.props.onCorrect?.();
+        this.setState({status: 'correct'});
     }
 
     onIncorrect() {
         this.props.onIncorrect?.(this.state.answer);
+        this.responseEl.current?.disable();
+        this.setState({status: 'incorrect'});
     }
 
     componentDidMount() {
@@ -88,7 +94,9 @@ export default class PracticeModality extends Component {
         }
     }
 
-    render(_, {question}) {
+    render(_, {question, status, answer}) {
+        console.log(this.state);
+
         let questionEl;
         switch(this.questionType) {
             case PracticeModality.QUESTION_TEXTUAL: {
@@ -118,7 +126,7 @@ export default class PracticeModality extends Component {
             case PracticeModality.RESPONSE_WRITTEN: {
                 responseEl = (
                     <div className="response-text">
-                        <TextInput ref={this.responseEl} title={this.responseTitle} hint={this.responseHint} />
+                        <TextInput status={status === 'incorrect' ? 'errored' : null} ref={this.responseEl} title={this.responseTitle} hint={this.responseHint} />
                     </div>
                 );
                 break;
@@ -135,7 +143,12 @@ export default class PracticeModality extends Component {
         return (
             <div className="practice-modality">
                 <div className="practice-question">{questionEl}</div>
-                <div className="response-area">{responseEl}</div>
+                <div className="response-area">
+                    {responseEl}
+                    <div data-status={status} className="correction-area">
+                        The correct answer is <span>{answer}</span>.
+                    </div>
+                </div>
                 {!this.controlled ? <div className="response-controls">
                     <Button onClick={this.checkButton} title="Check" />
                 </div> : ''}

@@ -23,6 +23,25 @@
         .response-text {
             width: 17em;
         }
+
+        .correction-area {
+            width: 100%;
+            text-align: center;
+
+            transform: scaleX(0);
+
+            transition: 300ms;
+
+            transform-origin: left;
+
+            > span {
+                font-weight: 600;
+            }
+
+            &[data-status="incorrect"] {
+                transform: none;
+            }
+        }
     }
 
     .response-controls {

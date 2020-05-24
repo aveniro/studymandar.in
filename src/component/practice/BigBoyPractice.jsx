@@ -44,16 +44,39 @@ export default class BigBoyPractice extends Component {
     onCorrect = () => {
         this.update(true);
 
-        setTimeout(this.nextQuestion, 1000);
+        //setTimeout(this.nextQuestion, 1000);
     };
 
     onIncorrect = correctAnswer => {
         this.update(false);
+
+        setTimeout(() => {
+            this.setState({status: 'incorrect-next'});
+        }, 1000);
         console.log(correctAnswer);
     };
 
     send = () => {
-        this.modalityRef.current?.check();
+        switch(this.state.status) {
+            case 'nominal': {
+                this.modalityRef.current?.check();
+                break;
+            }
+
+            case 'correct': {
+                this.nextQuestion();
+                break;
+            }
+
+            case 'incorrect': {
+                break;
+            }
+
+            case 'incorrect-next': {
+                this.nextQuestion();
+                break;
+            }
+        }
     };
 
     keydown = e => {
@@ -83,6 +106,13 @@ export default class BigBoyPractice extends Component {
             case 'incorrect': {
                 sendButtonIcon = (
                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                );
+                break;
+            }
+
+            case 'incorrect-next': {
+                sendButtonIcon = (
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
                 );
                 break;
             }

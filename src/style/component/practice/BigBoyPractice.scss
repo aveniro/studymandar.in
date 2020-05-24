@@ -67,6 +67,10 @@
                 background: #C1292E;
             }
 
+            &[data-status="incorrect-next"] {
+                background: #C1292E;
+            }
+
             &:hover {
                 filter: brightness(0.95);
             }
