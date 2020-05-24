@@ -1,5 +1,6 @@
 import {h}        from 'preact';
 import {useStore} from 'effector-react';
+import {route}    from 'preact-router';
 import {Link}     from 'preact-router/match';
 
 import {userState} from 'state/user';
@@ -13,7 +14,7 @@ export default function TopBar() {
 
     return (
         <div className="top-bar">
-            <div className="top-bar-title">我爱中文！</div>
+            <div onClick={() => { route('/'); }} className="top-bar-title">我爱中文！</div>
 
             {
                 user ? <LoggedInUser /> : 
