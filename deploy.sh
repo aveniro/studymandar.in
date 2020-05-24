@@ -23,7 +23,7 @@ if [[ ! $? -eq 0 ]]; then
 fi
 
 echo "Deploying project..."
-aws s3 sync ./studymandar.in/dist s3://studymandar.in
+aws s3 sync ./dist s3://studymandar.in
 
 echo "Invalidating the cloudfront instance..."
 aws cloudfront create-invalidation \
