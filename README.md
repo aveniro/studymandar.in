@@ -1,11 +1,11 @@
 <h1 align="center">我们爱中文</h1>
-<h3 align="center">chinese-helper</h3>
+<h3 align="center">studymandar.in</h3>
 
 <p align="center">
-  <img alt="build" src="https://img.shields.io/github/workflow/status/NateSeymour/chinese-helper/Node.js CI">
+  <img alt="build" src="https://img.shields.io/github/workflow/status/NateSeymour/studymandar.in/Node.js CI">
 </p>
 
-<a href="https://nateseymour.github.io/chinese-helper">**chinese-helper** alpha is now live!</a>
+<a href="https://studymandar.in/welcome">**chinese-helper** alpha is now live!</a>
 
 ### Features
 * Fully free and open-source

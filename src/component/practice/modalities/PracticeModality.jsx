@@ -55,7 +55,7 @@ export default class PracticeModality extends Component {
 
     getQuestion() {
         return {
-            question: 'Do you like chinese-helper?',
+            question: 'Do you like studymandar.in?',
             answer: 'yes'
         };
     }

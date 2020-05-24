@@ -15,12 +15,12 @@ export default class Welcome extends Component {
     };
 
     pages = [
-        {i: 1, title: 'chinese-helper', body: 'Welcome to the free chinese helper software created by Nathan Seymour.', color: '#3891A6'},
+        {i: 1, title: 'studymandar.in', body: 'Welcome to the free chinese helper software created by Nathan Seymour.', color: '#3891A6'},
         {i: 2, title: 'The Philosophy', body: 'The most efficient and successful language learners create their own resources, we give you the tools to do just that.', color: '#8F3985'},
         {i: 3, title: 'Mobility', body: 'Cloud based and mobile optimized, you can take your study session with you anywhere.', color: '#2F3061'},
         {
             i: 4, 
-            title: 'chinese-helper', 
+            title: 'studymandar.in', 
             body: 'Well, what are you waiting for?', 
             color: '#9B1D20',
             action: {
