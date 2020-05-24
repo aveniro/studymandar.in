@@ -31,7 +31,7 @@ jobs:
         unzip -q awscliv2.zip
         sudo ./aws/install
         ls
-        aws s3 sync ./studymandar.in/dist s3://studymandar.in/
+        aws s3 sync ./studymandar.in/dist s3://studymandar.in
 
         # Invalidate cloudfront instance
         aws cloudfront create-invalidation \
