@@ -7,6 +7,8 @@ import {loadApi} from 'state/ui';
 
 Enzyme.configure({ adapter: new Adapter() });
 
+jest.mock('@/loadingMessages', () => ['TEST_MESSGAGE'], {virtual: true});
+
 describe('<Loader /> component', () => {
     const container = Enzyme.shallow(<Loader />);
 
