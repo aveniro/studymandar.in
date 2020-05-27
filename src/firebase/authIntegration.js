@@ -1,59 +1,11 @@
-import * as firebase from 'firebase/app';
-
+import {userApi} from 'state/user';
+import {loadApi}            from 'state/ui';
 import {route} from 'preact-router';
-
-import firebaseConfig from 'config/firebase';
-
-import {userApi, userState} from 'state/user';
+import {toast} from '@/component/Toaster';
 import {wordsApi}           from 'state/words';
 import {sentencesApi}       from 'state/sentences';
-import {loadApi}            from 'state/ui';
 
-import {toast} from '@/component/Toaster';
-
-firebase.initializeApp(firebaseConfig);
-
-import(/* webpackChunkName: "FirebaseAuth" */ 'firebase/auth').then(() => {
-    import(/* webpackChunkName: "FirebaseFirestore" */ 'firebase/firestore').then(() => {
-        firebase.firestore().enablePersistence();
-
-        // Connect to words api
-        wordsApi.updateWord.watch(word => {
-            const user = userState.getState();
-            if(user && word.id) {
-                firebase.firestore().collection('users').doc(user.uid).collection('words').doc(word.id).set({
-                    script: word.script,
-                    pinyin: word.pinyin,
-                    translation: word.translation,
-            
-                    ocrTested: word.ocrTested || 0,
-                    ocrCorrect: word.ocrCorrect || 0,
-                    ocrRatio: word.ocrRatio || 0,
-            
-                    vocabTested: word.vocabTested || 0,
-                    vocabCorrect: word.vocabCorrect || 0,
-                    vocabRatio: word.vocabRatio || 0
-                });
-            }
-        });
-
-        wordsApi.addWord.watch(newWord => {
-            // TODO: .catch()
-            firebase.firestore().collection('users').doc(userState.getState().uid).collection('words').doc(newWord.id).set(newWord);
-        });
-
-        wordsApi.deleteWord.watch(word => {
-            firebase.firestore().collection('users').doc(userState.getState().uid).collection('words').doc(word.id).delete();
-        });
-
-        // Connect to sentences api
-        sentencesApi.addSentence.watch(newSentence => {
-            firebase.firestore().collection('users').doc(userState.getState().uid).collection('sentences').add(newSentence);
-        });
-
-    });
-
-    // Authentication
+export function integrateAuthentication(firebase) {
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
             const collection = firebase.firestore().collection('users');
@@ -68,7 +20,7 @@ import(/* webpackChunkName: "FirebaseAuth" */ 'firebase/auth').then(() => {
 
                     wordsApi.updateWords([]);
                 } else {
-                    snapshot.ref.collection('words').get().then(wordsSnapshot => {
+                    const wordsPromise = snapshot.ref.collection('words').get().then(wordsSnapshot => {
                         const wordsArray = [];
                         wordsSnapshot.forEach(word => {
                             wordsArray.push({...word.data(), id: word.id});
@@ -77,7 +29,7 @@ import(/* webpackChunkName: "FirebaseAuth" */ 'firebase/auth').then(() => {
                         wordsApi.updateWords(wordsArray);
                     });
 
-                    snapshot.ref.collection('sentences').get().then(sentencesSnapshot => {
+                    const sentencesPromise = snapshot.ref.collection('sentences').get().then(sentencesSnapshot => {
                         const sentencesArray = [];
                         sentencesSnapshot.forEach(sentence => {
                             sentencesArray.push({...sentence.data(), id: sentence.id});
@@ -85,18 +37,29 @@ import(/* webpackChunkName: "FirebaseAuth" */ 'firebase/auth').then(() => {
                         
                         sentencesApi.updateSentences(sentencesArray);
                     });
+
+                    const picturePromise = firebase.app().storage().refFromURL(userData.profilePicture).getDownloadURL().then(url => {
+                        user.profilePicture = url;
+                    });
+
+                    Promise.all([wordsPromise, sentencesPromise, picturePromise]).then(() => {
+                        userApi.updateUser(user);
+                        loadApi.stop();
+                    });
                 }
             });
 
-            route('/');
+            if(!['/', '/settings'].includes(window.location.pathname)) {
+                route('/');
+            }
         } else {
             if(window.location.pathname !== '/start') {
                 route('/welcome');
             }        
-        }
 
-        userApi.updateUser(user);
-        loadApi.stop();
+            userApi.updateUser(user);
+            loadApi.stop();
+        }
     });
 
     // Connect to user api
@@ -146,4 +109,4 @@ import(/* webpackChunkName: "FirebaseAuth" */ 'firebase/auth').then(() => {
             if(e.code !== 'auth/user-not-found') userApi.rejectLoginRegister();
         });
     });
-});
+}

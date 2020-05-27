@@ -1,0 +1,32 @@
+.settings {
+    .settings-area {
+        padding: 1em;
+        display: flex;
+        flex-direction: row;
+
+        .user-information {
+            border: 1px solid rgba(0,0,0,0.1);
+            overflow: hidden;
+            border-radius: 0.25em;
+
+            > * {
+                padding: .4em;
+            }
+
+            .settings-profile-pic {
+                margin-bottom: 0.5em;
+                padding: 0;
+                img {
+                    width: 15em;
+                    max-height: 15em;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .settings-body {
+            flex-grow: 10000;
+            padding: 0 1em 1em 1em;
+        }
+    }
+}

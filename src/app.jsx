@@ -4,6 +4,7 @@ import lazy                              from '@/lazy';
 
 const Home = lazy(() => import(/* webpackChunkName: "Home" */ '@/view/Home'));
 const LoginRegister = lazy(() => import(/* webpackChunkName: "LoginRegister" */ '@/view/LoginRegister'));
+const Settings = lazy(() => import(/* webpackChunkName: "Settings" */ '@/view/Settings'));
 const Welcome = lazy(() => import(/* webpackChunkName: "Welcome" */ '@/view/Welcome'), { preload: LoginRegister });
 
 import {Toaster} from '@/component/Toaster';
@@ -29,7 +30,9 @@ class App extends Component {
     };
 
     componentDidMount() {
-        import(/* webpackChunkName: "firebase" */ '@/firebase');
+        import(/* webpackChunkName: "firebase" */ '@/firebase').then(firebase => {
+            firebase.initFirebase();
+        });
 
         switch(window.location.pathname) {
         case '/welcome': {
@@ -51,6 +54,7 @@ class App extends Component {
                         <Home path="/" />
                         <LoginRegister path="/start" />
                         <Welcome path="/welcome" />
+                        <Settings path="/settings" />
                     </Router>
                 </div>
 
